@@ -3,24 +3,22 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: eYY-4yp-project-template
-title:
+repository-name: e16-4yp-Configurable-ECU-Emulater
+title: Configurable ECU Emulater
 ---
-
-[comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
 # Project Title
 
 #### Team
 
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
+- e16061, Chandula J.P.D.M, [email](mailto:e16061@eng.pdn.ac.lk)
+- e16203, Isuru Lakshan, [email](mailto:e16203@eng.pdn.ac.lk)
+- e16261, Aruna Nuwantha, [email](mailto:e16261@eng.pdn.ac.lk)
 
 #### Supervisors
 
-- Name, [email](mailto:name@eng.pdn.ac.lk)
-- Name, [email](mailto:name@eng.pdn.ac.lk)
+- Dr. Mahanama Wickramasinghe, [email](mailto:mahanamaw@eng.pdn.ac.lk)
+- Dr. Isuru Nawinne, [email](mailto:isurunawinne@eng.pdn.ac.lk)
 
 #### Table of content
 
@@ -35,9 +33,9 @@ title:
 
 ---
 
-DELETE THIS SAMPLE before publishing to GitHub Pages !!!
+<!-- DELETE THIS SAMPLE before publishing to GitHub Pages !!!
 This is a sample image, to show how to add images to your page. To learn more options, please refer [this](https://projects.ce.pdn.ac.lk/docs/faq/how-to-add-an-image/)
-![Sample Image](./images/sample.png)
+![Sample Image](./images/sample.png) -->
 
 
 ## Abstract
@@ -66,8 +64,8 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 [//]: # ( NOTE: EDIT THIS LINKS WITH YOUR REPO DETAILS )
 
-- [Project Repository](https://github.com/cepdnaclk/repository-name)
-- [Project Page](https://cepdnaclk.github.io/repository-name)
+- [Project Repository](https://github.com/cepdnaclk/e16-4yp-Configurable-ECU-Emulater)
+- [Project Page](https://cepdnaclk.github.io/e16-4yp-Configurable-ECU-Emulater)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
