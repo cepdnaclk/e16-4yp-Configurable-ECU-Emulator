@@ -38,7 +38,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 ![Sample Image](./images/sample.png) -->
 
 
-## Abstract
+<!-- ## Abstract
 
 ## Related works
 
@@ -50,7 +50,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Conclusion
 
-## Publications
+## Publications -->
 [//]: # "Note: Uncomment each once you uploaded the files to the repository"
 
 <!-- 1. [Semester 7 report](./) -->
