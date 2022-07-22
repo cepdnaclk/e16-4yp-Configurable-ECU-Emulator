@@ -1,37 +1,30 @@
 {
     "team": [
         {
-            "name": "Team Member Name 1",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
+            "name": "Chandula J.P.D.M",
+            "email": "e16061@eng.pdn.ac.lk",
+            "eNumber": "E/16/061"
         },
         {
-            "name": "Team Member Name 2",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
+            "name": "Lakshan S.A.I",
+            "email": "e16203@eng.pdn.ac.lk",
+            "eNumber": "E/16/203"
         },
         {
-            "name": "Team Member Name 3",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
+            "name": "Nuwantha B.L.A",
+            "email": "e16261@eng.pdn.ac.lk",
+            "eNumber": "E/16/261"
         }
     ],
     "supervisors": [
         {
-            "name": "Dr. Supervisor 1",
-            "email": "email@eng.pdn.ac.lk"
+            "name": "Dr. Mahanama Wickramasinghe",
+            "email": "mahanamaw@eng.pdn.ac.lk"
         },
         {
-            "name": "Dr. Supervisor 2",
-            "email": "email@eng.pdn.ac.lk"
+            "name": "Dr. Isuru Nawinne",
+            "email": "isurunawinne@eng.pdn.ac.lk"
         }
     ],
-    "media": [
-        {
-            "type": "youtube",
-            "title": "",
-            "url": "#"
-        }
-    ],
-    "tags": ["Final Year Projects"]
+    "tags": ["Final Year Projects","ECU Emulater", "Instruction Set Simulater", "Infinion Tricore", "Software Simulation", "Hardware Virtualization"]
 }
