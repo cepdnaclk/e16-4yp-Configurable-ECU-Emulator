@@ -1,5 +1,5 @@
 ___
-# Configurable ECU Emulator
+# Configurable ECU Emulator for Creating Digital Twins in the Car Manufacturing Industry
 
 Modern consumer vehicles are packed with electronic systems. These electronics include data
 gathering using different kinds of sensors, processing them, and making decisions according
