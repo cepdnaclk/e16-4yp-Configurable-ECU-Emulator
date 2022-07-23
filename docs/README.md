@@ -7,7 +7,7 @@ repository-name: e16-4yp-Configurable-ECU-Emulator
 title: Configurable ECU Emulator
 ---
 
-# Project Title
+# Configurable ECU Emulator for Creating Digital Twins in the Car Manufacturing Industry
 
 #### Team
 
