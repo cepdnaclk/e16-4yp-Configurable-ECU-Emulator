@@ -3,11 +3,11 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: e16-4yp-Configurable-ECU-Emulater
-title: Configurable ECU Emulater
+repository-name: e16-4yp-Configurable-ECU-Emulator
+title: Configurable ECU Emulator
 ---
 
-# Project Title
+# Configurable ECU Emulator for Creating Digital Twins in the Car Manufacturing Industry
 
 #### Team
 
