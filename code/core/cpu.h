@@ -9,15 +9,25 @@ class cpu
 
 public:
     // status registers
-    uint32_t PC;   // program counter
-    uint32_t PSW;  // program status word
+    uint32_t PC;  // program counter
+    uint32_t PSW; // program status word
+
+    /*
+        Field Bits Type Description
+        C       31  rw  Carry
+        V       30  rw  Overflow
+        SV      29  rw  Sticky Overflow
+        AV      28  rw  Advance Overflow
+        SAV     27  rw  Sticky Advance Overflow
+        RES[26:24]      -Reserved
+
+    */
     uint32_t PCXI; // previous context information
 
     // general purpose registers
     uint32_t D[16]; // data registers
     uint32_t A[16]; // address registers
 
-    uint8_t opcode = 10;
     void instruction_decode(uint32_t instruction);
     void execute(uint8_t opcode, uint32_t instruction);
 };
