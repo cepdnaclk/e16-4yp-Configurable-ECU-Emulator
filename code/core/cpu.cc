@@ -52,7 +52,7 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         int c = (instruction & 0xF0000000)>>28;
 
         D[c] = D[a] & const;
-        std::cout << "instruction and rc" << result;
+        std::cout << "instruction and rc" << D[c];
     }
     else if(opcode == INST_AND_RR)
     {
@@ -60,14 +60,14 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         int b = (instruction & 0x0000F000)>>12;
 
         D[c] = D[a] & D[b];
-        std::cout << "instruction and rr" << result;
+        std::cout << "instruction and rr" << D[c];
     }
     else if(opcode == INST_AND_SC)
     {
         int const = (instruction & 0x0000FF00)>>8;
         
         D[15] = D[15] & const;
-        std::cout << "instruction and sc" << result;
+        std::cout << "instruction and sc" << D[15];
     }
     else if(opcode == INST_AND_SR)
     {
