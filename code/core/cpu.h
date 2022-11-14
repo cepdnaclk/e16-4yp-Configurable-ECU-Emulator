@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <vector>
+#include "rtl_func.h"
 
 class cpu
 {
@@ -11,6 +12,7 @@ public:
     // status registers
     uint32_t PC;  // program counter
     uint32_t PSW; // program status word
+    rtl_functions rtl;
 
     /*
         Field Bits Type Description
@@ -29,7 +31,7 @@ public:
     uint32_t A[16]; // address registers
 
     void instruction_decode(uint32_t instruction);
-    void execute(uint8_t opcode);
+    void execute(uint8_t opcode, uint32_t instruction);
 };
 
 #endif
