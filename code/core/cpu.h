@@ -19,7 +19,7 @@ public:
 
     uint8_t opcode = 10;
     void instruction_decode(uint32_t instruction);
-    void execute(uint8_t opcode);
+    void execute(uint8_t opcode, uint32_t instruction);
 };
 
 #endif
