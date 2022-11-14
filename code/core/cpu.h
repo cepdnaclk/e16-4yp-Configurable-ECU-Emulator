@@ -29,7 +29,7 @@ public:
     uint32_t A[16]; // address registers
 
     void instruction_decode(uint32_t instruction);
-    void execute(uint8_t opcode);
+    void execute(uint8_t opcode, uint32_t instruction);
 };
 
 #endif
