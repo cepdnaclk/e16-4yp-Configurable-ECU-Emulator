@@ -6,17 +6,12 @@
 
 #include "bin_load.h"
 
-//--------------------------------------------------------------------
-// Constructor
-//--------------------------------------------------------------------
 bin_load::bin_load(const char *filename, mem_api *target)
 {
     m_filename = std::string(filename);
     m_target = target;
 }
-//-----------------------------------------------------------------
-// load: Binary load
-//-----------------------------------------------------------------
+
 bool bin_load::load(uint32_t mem_base, uint32_t mem_size)
 {
     // Load file
