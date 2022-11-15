@@ -7,5 +7,7 @@
 #define INST_AND_SR 0x26
 
 #define INST_ABS 0x0B
+#define INST_ABSDIF_CONST 0x8B
+#define INST_ABSDIF 0x0B
 
 #endif
