@@ -5,8 +5,8 @@
 void cpu::instruction_decode(uint32_t instruction)
 {
     // decode instruction
+    uint8_t opcode = (instruction & 0x000000FF);
     // call execute
-    std::cout << "hello world" << std::endl;
 }
 
 void cpu::execute(uint8_t opcode, uint32_t instruction)
@@ -255,9 +255,4 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
             PSW = PSW | (1 << 27);
         }
     }
-}
-int main()
-{
-
-    return 0;
 }

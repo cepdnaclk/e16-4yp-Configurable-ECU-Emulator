@@ -1,0 +1,154 @@
+ABS - Absolute Value
+ABS.B
+ABS.H
+ABSDIF - 2
+ABSDIF.B
+ABSDIF.H
+ABSDIFS - 2
+ABSDIFS.H
+ABSS
+ABSS.H
+ADD - 2
+ADD.A
+ADD.B
+ADD.H
+ADDC - 2
+ADDI
+ADDIH
+ADDIH.A
+ADDS - 2
+ADDS.H
+ADDS.HU
+ADDS.U
+ADDSC.A
+ADDSC.AT
+ADDX
+AND - 2
+AND.AND.T
+AND.ANDN.T
+AND.NOR.T
+AND.OR.T
+AND.EQ
+AND.GE
+AND.GE.U
+AND.LT
+AND.LT.U
+AND.NE
+AND.T
+ANDN
+ANDN.T
+
+
+DEBUG
+DEXTR
+DISABLE
+DSYNC
+DVADJ
+DIV
+DIV.U
+DVINIT
+DVINIT.U
+DVINIT.B
+DVINIT.BU
+DVINIT.H
+DVINIT.HU
+DVSTEP
+DVSTEP.U
+
+a d e f g h i j k l m n o p q r s t u v w x y z
+
+ENABLE - Enable Interrupts
+EQ - Equal
+EQ.A - Equal to Address
+EQ.B - Equal Packed Byte
+EQ.H - Equal Packed Half-word
+EQ.W - Equal Packed Word
+EQANY.B - Equal Any Byte
+EQANY.H - Equal Any Half-word
+EQZ.A - Equal Zero Address
+EXTR - Extract Bit Field
+EXTR.U - Extract Bit Field Unsigned
+
+
+FCALL - Fast call
+FCALLA - Fast Call Absolute
+FCALLI - Fast Call Indirect
+FRET - Return from Fast Call
+
+
+GE - Greater Than or Equal
+GE.U - Greater than or equal Unsigned
+GE.A - Greater Than or Equal Address
+
+
+IMASK - Insert Mask
+INS.T - Insert Bit
+INSN.T - Insert Bit-Not
+INSERT - Insert Bit Field
+ISYNC - Synchronize Instructions
+IXMAX - Find Maximum Index
+IXMAX.U - Find Maximum Index (unsigned)
+IXMIN - Find Minimum Index
+IXMIN.U - Find Minimum Index (unsigned)
+
+J - Jump Unconditional
+JA - Jump Unconditional Absolute
+JEQ - Jump if Equal
+JEQ.A - Jump if Equal Address
+JGE - Jump if Greater Than or Equal
+JGE.U - Jump if Greater Than or Equal Unsigned
+JGEZ (16-bit) - Jump if Greater Than or Equal to Zero (16-bit)
+JGTZ (16-bit) - Jump if Greater Than Zero (16-bit)
+JI - Jump Indirect
+JL - Jump and Link
+JLA - Jump and Link Absolute
+JLEZ (16-bit) - Jump if Less Than or Equal to Zero (16-bit)
+JLI - Jump and Link Indirect
+JLT - Jump if Less Than
+JLT.U - Jump if Less Than Unsigned
+JLTZ (16-bit) - Jump if Less Than Zero (16-bit)
+JNE - Jump if Not Equal
+JNE.A - Jump if Not Equal Address
+JNED - Jump if Not Equal and Decrement
+JNEI - Jump if Not Equal and Increment
+JNZ (16-bit) - Jump if Not Equal to Zero (16-bit)
+JNZ.A - Jump if Not Equal to Zero Address
+JNZ.T - Jump if Not Equal to Zero Bit
+JZ (16-bit) - Jump if Zero (16-bit)
+JZ.A -  Jump if Zero Address 
+JZ.T - Jump if Zero Bit
+
+LD.A - Load Word to Address Register
+LD.B - Load Byte
+LD.BU - Load Byte Unsigned
+LD.D - Load Double-word
+LD.DA - Load Double-word to Address Register
+LD.H - Load Half-word
+LD.HU - Load Half-word Unsigned
+LD.Q - Load Half-word Signed Fraction
+LD.W - Load Word
+LDLCX - Load Lower Context
+LDMST - Load-Modify-Store
+LDUCX - Load Upper Context
+LEA - Load Effective Address
+LHA - Load High Address
+LOOP - Loop
+LOOPU - Loop Unconditional
+LT - Less Than
+LT.U - Less Than Unsigned
+LT.A - Less Than Address
+LT.B - Less Than Packed Byte
+LT.BU - Less Than Packed Byte Unsigned
+LT.H - Less Than Packed Half-word
+LT.HU - Less Than Packed Half-word Unsigned
+LT.W - Less Than Packed Word
+LT.WU - Less Than Packed Word Unsigned
+
+
+
+
+
+
+
+
+
