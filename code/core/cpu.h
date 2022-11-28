@@ -10,7 +10,7 @@ class cpu
 
 public:
     // status registers
-    uint32_t PC;  // program counter
+    uint32_t PC = 0;  // program counter
     uint32_t PSW; // program status word
     rtl_functions rtl;
 
