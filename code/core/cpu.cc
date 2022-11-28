@@ -14,7 +14,6 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
 
     if (opcode == INST_ABS && ((instruction & 0x0FF00000) >> 20 == 0x1C))
     {
-
         int b = (instruction & 0x0000F000) >> 12; // read instruction[12:15]
         int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
         uint32_t abs_result = (D[b] >= 0) ? D[b] : (0 - D[b]);
@@ -38,6 +37,41 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         {
             PSW = PSW | (1 << 27);
         }
+        std::cout << "instruction abs";
+    }  
+
+    //AND instruction
+    else if(opcode == INST_AND_RC)
+    {
+        int a = (instruction & 0x00000F00)>>8;
+        int const = (instruction & 0x001FF000)>>12;
+        int c = (instruction & 0xF0000000)>>28;
+
+        D[c] = D[a] & const;
+        std::cout << "instruction and rc" << D[c];
+    }
+    else if(opcode == INST_AND_RR)
+    {
+        int a = (instruction & 0x00000F00)>>8;
+        int b = (instruction & 0x0000F000)>>12;
+
+        D[c] = D[a] & D[b];
+        std::cout << "instruction and rr" << D[c];
+    }
+    else if(opcode == INST_AND_SC)
+    {
+        int const = (instruction & 0x0000FF00)>>8;
+        
+        D[15] = D[15] & const;
+        std::cout << "instruction and sc" << D[15];
+    }
+    else if(opcode == INST_AND_SR)
+    {
+        int a = (instruction & 0x0F00)>>8;
+        int b = (instruction & 0xF000)>>12;
+
+        D[a] = D[a] & D[b];
+        std::cout << "instruction and sr" << D[a];
     }
     /*
      * ABS.B
