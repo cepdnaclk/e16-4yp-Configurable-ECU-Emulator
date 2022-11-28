@@ -5,12 +5,8 @@
 void cpu::instruction_decode(uint32_t instruction)
 {
     // decode instruction
-
-    //16 bit instruction -> 1st instruction bit is zero
-
-    //32 bit instruction -> 1st instruction bit is one
-
-    std::cout << "hello world" << std::endl;
+    uint8_t opcode = (instruction & 0x000000FF);
+    // call execute
 }
 
 void cpu::execute(uint8_t opcode, uint32_t instruction)
@@ -293,8 +289,4 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
             PSW = PSW | (1 << 27);
         }
     }
-}
-int main()
-{
-    return 0;
 }
