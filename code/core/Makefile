@@ -1,5 +1,5 @@
 CC=g++
-OUTPUT= a.out
+OUTPUT= main
 SRC= $(wildcard *.cc)
 
 all:
@@ -9,5 +9,5 @@ run: $(OUTPUT)
 	./$(OUTPUT)
 
 clean:
-	rm -f $(OUTPUT)
+	rm -f $(wildcard *.out)
 
