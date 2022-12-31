@@ -418,4 +418,42 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
 
 
 
+
+
+
+
+    //######## N #########
+    /*
+     * NAND  -  Bitwise NAND
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t temp = cpu::rtl.sign_ext(instruction & 0x001FF000);
+        uint32_t result = (D[a] > temp) ? (D[a] - temp) : (temp - D[a]);
+        D[c] = cpu::rtl.ssov(result, 32);
+
+        // update PSW
+        uint32_t overflow = (result > 0x7FFFFFFF) || (result < -0x80000000);
+        // update the PSW.V bit
+        PSW = overflow ? PSW | (1 << 30) : PSW & ~(1 << 30);
+        // update the PSW.SV bit
+        if (overflow)
+        {
+            PSW = PSW | (1 << 29);
+        }
+        // update the PSW.AV bit
+        uint32_t aov = ((result & 0x80000000) ^ (result & 0x40000000)) >> 30; // result[31] ^ result[30];
+        PSW = aov ? PSW | (1 << 28) : PSW & ~(1 << 28);
+        // update the PSW.SAV bit
+        if (aov)
+        {
+            PSW = PSW | (1 << 27);
+        }
+    }
+}
+int main()
+{
+    return 0;
 }

@@ -1,0 +1,196 @@
+BISR - Begin interrupt service routine
+BMERGE - Bit merge
+BSPLIT - Bit Split
+
+
+DEBUG
+DEXTR - Double REGISTER extract
+DISABLE
+DSYNC
+DVADJ
+DIV - Divide
+DIV.U - Divide unisigned
+DVINIT - Divide-Initialization Word
+DVINIT.U- Divide-Initialization Word Unsigned
+DVINIT.B - Divide-Initialization Byte
+DVINIT.BU- Divide-Initialization Byte Unsigned
+DVINIT.H- Divide-Initialization Half-word
+DVINIT.HU- Divide-Initialization Half-word Unsigned
+
+DVSTEP - Divide-Step
+DVSTEP.U - Divide-Step Unsigned
+
+
+
+m - t
+
+MADD  -  Multiply-Add
+MADDS  -  Multiply-Add, Saturated
+MADD.H  -  Packed Multiply-Add Q Format
+MADDS.H  -  Packed Multiply-Add Q Format, Saturated
+MADD.Q  -  Multiply-Add Q Format
+MADDS.Q  -  Multiply-Add Q Format, Saturated
+MADD.U  -  Multiply-Add Unsigned
+MADDS.U  -  Multiply-Add Unsigned, Saturated
+MADDM.H  -  Packed Multiply-Add Q Format Multi-precision
+MADDMS.H  -  Packed Multiply-Add Q Format Multi-precision, Saturated
+MADDR.H  -  Packed Multiply-Add Q Format with Rounding
+MADDRS.H  -  Packed Multiply-Add Q Format with Rounding, Saturated
+MADDR.Q  -  Multiply-Add Q Format with Rounding
+MADDRS.Q  -  Multiply-Add Q Format with Rounding, Saturated
+MADDSU.H  -  Packed Multiply-Add/Subtract Q Format
+MADDSUS.H  -  Packed Multiply-Add/Subtract Q Format Saturated
+MADDSUM.H  -  Packed Multiply-Add/Subtract Q Format Multi-precision
+MADDSUMS.H  -  Packed Multiply-Add/Subtract Q Format Multi-precision Saturated
+MADDSUR.H  -  Packed Multiply-Add/Subtract Q Format with Rounding
+MADDSURS.H  -  Packed Multiply-Add/Subtract Q Format with Rounding Saturated
+MAX  -  Maximum Value
+MAX.U  -  Maximum Value Unsigned
+MAX.B  -  Maximum Value Packed Byte
+MAX.BU  -  Maximum Value Packed Byte Unsigned
+MAX.H  -  Maximum Value Packed Half-word
+MAX.HU  -  Maximum Value Packed Half-word Unsigned
+MFCR  -  Move From Core Register
+MIN  -  Minimum Value
+MIN.U  -  Minimum Value Unsigned
+MIN.B  -  Minimum Value Packed Byte
+MIN.BU  -  Minimum Value Packed Byte Unsigned
+MIN.H  -  Minimum Value Packed Half-word
+MIN.HU  -  Minimum Value Packed Half-word Unsigned
+MOV  -  Move
+MOV.A  -  Move Value to Address Register
+MOV.AA  -  Move Address from Address Register
+MOV.D  -  Move Address to Data Register
+MOV.U  -  Move Unsigned
+MOVH  -  Move High
+MOVH.A  -  Move High to Address
+MSUB  -  Multiply-Subtract
+MSUBADS  -  Multiply-Subtract, Saturated
+MSUB.H  -  Packed Multiply-Subtract Q Format
+MSUBS.H  -  Packed Multiply-Subtract Q Format, Saturated
+MSUB.Q  -  Multiply-Subtract Q Format
+MSUBS.Q  -  Multiply-Subtract Q Format, Saturated
+MSUB.U  -  Multiply-Subtract Unsigned
+MSUBS.U  -  Multiply-Subtract Unsigned, Saturated
+MSUBAD.H  -  Packed Multiply-Subtract/Add Q Format
+MSUBADS.H  -  Packed Multiply-Subtract/Add Q Format, Saturated
+MSUBADM.H  -  Packed Multiply-Subtract/Add Q Format-Multi-precision
+MSUBADMS.H  -  Packed Multiply-Subtract/Add Q Format-Multi-precision, Saturated
+MSUBADR.H  -  Packed Multiply-Subtract/Add Q Format with Rounding
+MSUBADRS.H  -  Packed Multiply-Subtract/Add Q Format with Rounding, Saturated
+MSUBM.H  -  Packed Multiply-Subtract Q Format-Multi-precision
+MSUBMS.H  -  Packed Multiply-Subtract Q Format-Multi-precision, Saturated
+MSUBR.H  -  Packed Multiply-Subtract Q Format with Rounding
+MSUBRS.H  -  Packed Multiply-Subtract Q Format with Rounding, Saturated
+MSUBR.Q  -  Multiply-Subtract Q Format with Rounding
+MSUBRS.Q   -  Multiply-Subtract Q Format with Rounding, Saturated
+MTCR   -  Move To Core Register
+MUL   -  Multiply
+MULS   -  Multiply, Saturated
+MUL.H   -  Packed Multiply Q Format
+MUL.Q   -  Multiply Q Format
+MUL.U   -  Multiply Unsigned
+MULS.U  -  Multiply Unsigned, Saturated
+MULM.H  -  Packed Multiply Q Format-Multi-precision
+MULR.H  -  Packed Multiply Q Format with Rounding
+MULR.Q  -  Multiply Q Format with Rounding
+
+
+NAND  -  Bitwise NAND
+NAND.T  -  Bit Logical NAND
+NE  -  Not Equal
+NE.A  -  Not Equal Address
+NEZ.A  -  Not Equal Zero Address
+NOP  -  No Operation
+NOR  -  Bitwise NOR
+NOR.T  -  Bit Logical NOR
+NOT (16-bit)  -  Bitwise Complement NOT (16-bit)
+
+
+OR  -  Bitwise OR
+OR.AND.T  -  Accumulating Bit Logical OR-AND
+OR.ANDN.T  -  Accumulating Bit Logical OR-AND-Not
+OR.NOR.T  -  Accumulating Bit Logical OR-NOR
+OR.OR.T  -  Accumulating Bit Logical OR-OR
+OR.EQ  -  Equal Accumulating
+OR.GE  -  Greater Than or Equal Accumulating
+OR.GE.U  -  Greater Than or Equal Accumulating Unsigned
+OR.LT  -  Less Than Accumulating
+OR.LT.U  -  Less Than Accumulating Unsigned
+OR.NE  -  Not Equal Accumulating
+OR.T  -  Bit Logical OR
+ORN  -  Bitwise OR-Not
+ORN.T  -  Bit Logical OR-Not
+
+PACK -  Pack
+PARITY -  Parity
+POPCNT.W -  Population Count Word
+
+RESTORE  -  Restore
+RET  -  Return from Call
+RFE  -  Return From Exception
+RFM  -  Return From Monitor
+RSLCX  -  Restore Lower Context
+RSTV  -  Reset Overflow Bits
+RSUB  -  Reverse-Subtract
+RSUBS  -  Reverse-Subtract with Saturation
+RSUBS.U  -  Reverse-Subtract Unsigned with Saturation
+
+
+SAT.B  -  Saturate Byte
+SAT.BU  -  Saturate Byte Unsigned
+SAT.H  -  Saturate Half-word
+SAT.HU  -  Saturate Half-word Unsigned
+SEL  -  Select
+SELN  -  Select-Not
+SH  -  Shift
+SH.EQ  -  Shift Equal
+SH.GE  -  Shift Greater Than or Equal
+SH.GE.U  -  Shift Greater Than or Equal Unsigned
+SH.H  -  Shift Packed Half-words
+SH.LT   -  Shift Less Than
+SH.LT.U  -  Shift Less Than Unsigned
+SH.NE  -  Shift Not Equal
+SH.AND.T  -  Accumulating Shift-AND
+SH.ANDN.T   -  Accumulating Shift-AND-Not
+SH.NAND.T   -  Accumulating Shift-NAND
+SH.NOR.T   -  Accumulating Shift-NOR
+SH.OR.T   -  Accumulating Shift-OR
+SH.ORN.T   -  Accumulating Shift-OR-Not
+SH.XNOR.T   -  Accumulating Shift-XNOR
+SH.XOR.T   -  Accumulating Shift-XOR
+SHA  -  Arithmetic Shift
+SHA.H  -  Arithmetic Shift Packed Half-words
+SHAS   -  Arithmetic Shift with Saturation
+SHUFFLE  -  Byte Shuffle
+ST.A   -  Store Word from Address Register
+ST.B  -  Store Byte
+ST.D   -  Store Double-word
+ST.DA  -  Store Double-word from Address Registers
+ST.H  -  Store Half-word
+ST.Q   -  Store Half-word Signed Fraction
+ST.T   -  Store Bit
+ST.W   -  Store Word
+STLCX   -  Store Lower Context
+STUCX   -  Store Upper Context
+SUB   -  Subtract
+SUB.A   -  Subtract Address
+SUB.B   -  Subtract Packed Byte
+SUB.H   -  Subtract Packed Half-word
+SUBC   -  Subtract With Carry
+SUBS   -  Subtract Signed with Saturation
+SUBS.U   -  Subtract Unsigned with Saturation
+SUBS.H   -  Subtract Packed Half-word with Saturation
+SUBS.HU   -  Subtract Packed Half-word Unsigned with Saturation
+SUBX   -  Subtract Extended
+SVLCX   -  Save Lower Context
+SWAP.W   -  Swap with Data Register
+SWAPMSK.W   -  Swap under Mask
+SYSCALL  -  System Call
+
+
+TRAPSV  -  Trap on Sticky Overflow
+TRAPV  -  Trap on Overflow
+
+
+ 
