@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <vector>
 #include "rtl_func.h"
+#include "memory.h"
 
 class cpu
 {
@@ -32,6 +33,9 @@ public:
 
     void instruction_decode(uint32_t instruction);
     void execute(uint8_t opcode, uint32_t instruction);
+
+    // memory
+    memory mem;
 };
 
 #endif

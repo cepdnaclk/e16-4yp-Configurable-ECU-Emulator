@@ -1,5 +1,5 @@
 CC=g++
-OUTPUT= main
+OUTPUT= a.out
 SRC= $(wildcard *.cc)
 
 all:

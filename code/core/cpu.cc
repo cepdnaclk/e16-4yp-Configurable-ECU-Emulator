@@ -423,4 +423,18 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
     {
         PC += 1;
     }
+
+    else if (opcode == INST_STA1)
+    {
+        int a = (instruction & 0x00000F00) >> 8; // read instruction[12:15]
+        uint32_t off18 = 0x00000000;
+        off18 = (instruction & 0x003F0000) >> 16;                  // read instruction[16:21];
+        off18 = off18 | (((instruction & 0xF0000000) >> 28) << 6); // read instruction[28:31];
+        off18 = off18 | (((instruction & 0x03C00000) >> 22) << 10);
+        off18 = off18 | (((instruction & 0x0000F000) >> 12) << 14);
+        uint32_t EA = 0x00000000;
+        EA = (off18 & 0x00003FFF) | ((off18 & 0x0003C000) << 28);
+        mem.write(EA, A[a]);
+        PC += 1;
+    }
 }
