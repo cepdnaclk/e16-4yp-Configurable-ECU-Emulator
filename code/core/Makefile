@@ -9,5 +9,5 @@ run: $(OUTPUT)
 	./$(OUTPUT)
 
 clean:
-	rm -f $(OUTPUT)
+	rm -f $(wildcard *.out)
 
