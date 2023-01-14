@@ -38,14 +38,15 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
             PSW = PSW | (1 << 27);
         }
         std::cout << "instruction abs";
-    }  
+        PC += 1;
+    }
 
-    //AND instruction
-    // else if(opcode == INST_AND_RC)
-    // {
-    //     int a = (instruction & 0x00000F00)>>8;
-    //     int const = (instruction & 0x001FF000)>>12;
-    //     int c = (instruction & 0xF0000000)>>28;
+    // AND instruction
+    //  else if(opcode == INST_AND_RC)
+    //  {
+    //      int a = (instruction & 0x00000F00)>>8;
+    //      int const = (instruction & 0x001FF000)>>12;
+    //      int c = (instruction & 0xF0000000)>>28;
 
     //     D[c] = D[a] & const;
     //     std::cout << "instruction and rc" << D[c];
@@ -61,7 +62,7 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
     // else if(opcode == INST_AND_SC)
     // {
     //     int const = (instruction & 0x0000FF00)>>8;
-        
+
     //     D[15] = D[15] & const;
     //     std::cout << "instruction and sc" << D[15];
     // }
@@ -297,7 +298,8 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         }
         PC += 1;
     }
-    else if (opcode == INST_ABS && ((instruction & 0x07F00000) >> 20 == 0x0E)){
+    else if (opcode == INST_ABS && ((instruction & 0x07F00000) >> 20 == 0x0E))
+    {
         int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
         int b = (instruction & 0x0000F000) >> 12; // read instruction[12:15]
         int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
@@ -324,10 +326,11 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         PC += 1;
     }
     /*
-    * ABSDIFS.H
-    * Absolute Value of Difference Packed Half-word with Saturation
-    */
-    else if (opcode == INST_ABS && ((instruction & 0x07F00000) >> 21 == 0x0E)){
+     * ABSDIFS.H
+     * Absolute Value of Difference Packed Half-word with Saturation
+     */
+    else if (opcode == INST_ABS && ((instruction & 0x07F00000) >> 21 == 0x0E))
+    {
         int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
         int b = (instruction & 0x0000F000) >> 12; // read instruction[12:15]
         int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
@@ -357,13 +360,14 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         PC += 1;
     }
     /*
-    * ABSS
-    * Absolute Value with Saturation
-    */
-    else if (opcode == INST_ABS && ((instruction & 0x0FF00000) >> 20 == 0x1D)){
+     * ABSS
+     * Absolute Value with Saturation
+     */
+    else if (opcode == INST_ABS && ((instruction & 0x0FF00000) >> 20 == 0x1D))
+    {
         int b = (instruction & 0x0000F000) >> 12; // read instruction[12:15]
         int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
-        uint32_t result = (D[b] > 0) ? D[b] :(0-D[b]);
+        uint32_t result = (D[b] > 0) ? D[b] : (0 - D[b]);
         D[c] = cpu::rtl.ssov(result, 32);
 
         // update PSW
@@ -385,7 +389,8 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         }
         PC += 1;
     }
-    else if (opcode == INST_ABS && ((instruction & 0x0FF00000) >> 20 == 0x7D)){
+    else if (opcode == INST_ABS && ((instruction & 0x0FF00000) >> 20 == 0x7D))
+    {
         int b = (instruction & 0x0000F000) >> 12; // read instruction[12:15]
         int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
         uint32_t result_harfword1 = (D[b] & 0xFFFF0000) >= 0 ? (D[b] & 0xFFFF0000) : (0 - (D[b] & 0xFFFF0000));
@@ -413,9 +418,23 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         }
         PC += 1;
     }
-    
 
+    else if (opcode == INST_BISR)
+    {
+        PC += 1;
+    }
 
-
-
+    else if (opcode == INST_STA1)
+    {
+        int a = (instruction & 0x00000F00) >> 8; // read instruction[12:15]
+        uint32_t off18 = 0x00000000;
+        off18 = (instruction & 0x003F0000) >> 16;                  // read instruction[16:21];
+        off18 = off18 | (((instruction & 0xF0000000) >> 28) << 6); // read instruction[28:31];
+        off18 = off18 | (((instruction & 0x03C00000) >> 22) << 10);
+        off18 = off18 | (((instruction & 0x0000F000) >> 12) << 14);
+        uint32_t EA = 0x00000000;
+        EA = (off18 & 0x00003FFF) | ((off18 & 0x0003C000) << 28);
+        mem.write(EA, A[a]);
+        PC += 1;
+    }
 }
