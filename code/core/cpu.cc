@@ -423,8 +423,11 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
     {
         PC += 1;
     }
+}
 
-    else if (opcode == INST_STA1)
+void cpu::execute_memory_instructions(uint8_t opcode, uint32_t instruction)
+{
+    if (opcode == INST_STA1)
     {
         int a = (instruction & 0x00000F00) >> 8; // read instruction[12:15]
         uint32_t off18 = 0x00000000;
