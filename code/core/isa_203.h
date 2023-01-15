@@ -8,10 +8,6 @@
 
 #define INST_ABS 0x0B
 #define INST_ABSDIF_CONST 0x8B
-#define INST_BISR 0xAD
-
-//load store instructions
-#define INST_STA1 0xA5
 
 
 
@@ -40,5 +36,16 @@
 
 //opcodes for instructions starting from "N"
 #define INST_NAND 0x8F
+
+
+//opcodes for instructions starting from "J"
+#define INST_JMP 0x1D
+#define INST_JA 0x9D
+#define INST_JEQ 0xDF
+#define INST_JEQ1 0x5F
+#define INST_JEQA 0x7D
+#define INST_JGE 0xFF
+#define INST_JGE1 0x7F
+#define INST_JGEU 0xFF
 
 #endif
