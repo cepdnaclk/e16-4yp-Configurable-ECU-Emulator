@@ -33,6 +33,7 @@ public:
 
     void instruction_decode(uint32_t instruction);
     void execute(uint8_t opcode, uint32_t instruction);
+    void execute_memory_instructions(uint8_t opcode, uint32_t instruction);
 
     // memory
     memory mem;
