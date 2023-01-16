@@ -1,12 +1,22 @@
 #include "isa.h"
 #include "cpu.h"
 #include <iostream>
+#include <algorithm>
 
 void cpu::instruction_decode(uint32_t instruction)
 {
+    uint8_t memory_instructions[] = {INST_STA1};
     // decode instruction
     uint8_t opcode = (instruction & 0x000000FF);
     // call execute
+    if (std::find(std::begin(memory_instructions), std::end(memory_instructions), opcode) != std::end(memory_instructions))
+    {
+        execute_memory_instructions(opcode, instruction);
+    }
+    else
+    {
+        execute(opcode, instruction);
+    }
 }
 
 void cpu::execute(uint8_t opcode, uint32_t instruction)
@@ -423,12 +433,8 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
     {
         PC += 1;
     }
-}
 
-
-
-
-    //######## N #########
+    // ######## N #########
     /*
      * NAND  -  Bitwise NAND
      */
@@ -458,13 +464,12 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
             PSW = PSW | (1 << 27);
         }
     }
-
 }
 
+// execute memory instructions
 void cpu::execute_memory_instructions(uint8_t opcode, uint32_t instruction)
 {
     if (opcode == INST_STA1)
-
     {
         int a = (instruction & 0x00000F00) >> 8; // read instruction[12:15]
         uint32_t off18 = 0x00000000;
@@ -477,8 +482,4 @@ void cpu::execute_memory_instructions(uint8_t opcode, uint32_t instruction)
         mem.write(EA, A[a]);
         PC += 1;
     }
-}
-int main()
-{
-    return 0;
 }
