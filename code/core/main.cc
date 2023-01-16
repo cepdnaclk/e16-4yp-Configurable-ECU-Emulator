@@ -49,12 +49,15 @@ int main()
     }
     clock_t instruction_execution_end_time = clock();
 
-    double instruction_load_elapsed_time = (instruction_load_end_time - instruction_load_start_time) / CLOCKS_PER_SEC;
-    double instruction_execution_elapsed_time = (instruction_execution_end_time - instruction_execution_start_time) / CLOCKS_PER_SEC;
+    double instruction_load_elapsed_time = (instruction_load_end_time - instruction_load_start_time) / (double)(CLOCKS_PER_SEC / 1000);
+    double instruction_execution_elapsed_time = (instruction_execution_end_time - instruction_execution_start_time) / (double)(CLOCKS_PER_SEC / 1000);
+
     cout << "--------------------------------------------------------" << endl;
     cout << "Instructions loaded: " << size << endl;
-    cout << "Instructions load time: " << instruction_load_elapsed_time << " seconds" << endl;
-    cout << "Instructions execution time: " << instruction_execution_elapsed_time << " seconds" << endl;
+    // cout << instruction_load_start_time << endl;
+    cout << "Instructions load time: " << instruction_load_elapsed_time << " milliseconds" << endl;
+    cout << "Instructions execution time: " << instruction_execution_elapsed_time << " milliseconds" << endl;
+    cout << "--------------------------------------------------------" << endl;
 
     return 0;
 }
