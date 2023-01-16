@@ -16,7 +16,7 @@
 // opcodes for instructions starting from "N"
 #define INST_NAND 0x8F
 
-//opcodes for instructions starting from "J"
+// opcodes for instructions starting from "J"
 #define INST_JMP 0x1D
 #define INST_JA 0x9D
 #define INST_JEQ 0xDF
