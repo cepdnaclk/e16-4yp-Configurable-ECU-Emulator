@@ -186,8 +186,8 @@ int main()
                         operand3 = zeroExtend(operand3, 4 - operand3.length());
 
                         MyFile << operand1 << "00000000"
-                             << "00"
-                             << "00" << operand3 << operand2 << op1 << endl;
+                               << "00"
+                               << "00" << operand3 << operand2 << op1 << endl;
                     }
                 }
                 break;
@@ -283,8 +283,14 @@ int main()
             operand3 = zeroExtend(operand3, 4 - operand3.length());
 
             MyFile << operand1 << "00001000"
-                 << "00"
-                 << "00" << operand3 << operand2 << op1 << endl;
+                   << "00"
+                   << "00" << operand3 << operand2 << op1 << endl;
+        }
+        else if (!out[0].compare("nop"))
+        {
+            op1 = "00001101"; // Bit[7:0]
+
+            MyFile << zeroExtend(op1, 32 - op1.length()) << endl;
         }
         else
         {
