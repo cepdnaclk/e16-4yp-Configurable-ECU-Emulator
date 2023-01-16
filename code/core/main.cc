@@ -29,16 +29,21 @@ void load_instructions(string filename, int &size)
         //     printf("%X\n", instruction_buffer[j]);
     }
     else
-        cout << "Unable to open file";
+    {
+
+        cout << "Unable to open file: " << filename << endl;
+        exit(1);
+    }
 }
 
-int main()
+int main(int argc, char **argv)
 {
     cpu cpu1;
     memory mem;
     int size = 0;
+    string filename = argv[1];
     clock_t instruction_load_start_time = clock();
-    load_instructions("../test/test.txt", size);
+    load_instructions(filename, size);
     clock_t instruction_load_end_time = clock();
 
     clock_t instruction_execution_start_time = clock();
@@ -51,12 +56,14 @@ int main()
 
     double instruction_load_elapsed_time = (instruction_load_end_time - instruction_load_start_time) / (double)(CLOCKS_PER_SEC / 1000);
     double instruction_execution_elapsed_time = (instruction_execution_end_time - instruction_execution_start_time) / (double)(CLOCKS_PER_SEC / 1000);
+    double total_elapsed_time = instruction_load_elapsed_time + instruction_execution_elapsed_time;
 
     cout << "--------------------------------------------------------" << endl;
     cout << "Instructions loaded: " << size << endl;
     // cout << instruction_load_start_time << endl;
     cout << "Instructions load time: " << instruction_load_elapsed_time << " milliseconds" << endl;
     cout << "Instructions execution time: " << instruction_execution_elapsed_time << " milliseconds" << endl;
+    cout << "Total time: " << total_elapsed_time << " milliseconds" << endl;
     cout << "--------------------------------------------------------" << endl;
 
     return 0;

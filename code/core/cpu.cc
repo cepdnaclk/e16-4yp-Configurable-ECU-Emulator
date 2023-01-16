@@ -604,8 +604,8 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         uint32_t disp24_1 = (instruction & 0x00007F00) << 24; // read instruction[15:8]
         uint32_t disp24_2 = (instruction & 0xFFFF8000) >> 16; // read instruction[31:16]
         uint32_t temp = disp24_1 + disp24_2;
-        uint32_t result = cpu::rtl.sign_ext(temp * 2); // 24 bits to 32 bits sign extention needed!
-        PC += result;
+        int result = cpu::rtl.sign_ext(temp * 2); // 24 bits to 32 bits sign extention needed!
+        PC += (int)(result / 4);
 
         // no updates to PSW
     }
@@ -635,7 +635,7 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         if (D[a] == cpu::rtl.sign_ext(const4))
         {
             uint32_t disp15 = (instruction & 0x7FFF8000) >> 16; // read instruction[30:16]
-            uint32_t result = cpu::rtl.sign_ext(disp15);        // 24 bits to 32 bits sign extention needed!
+            int result = cpu::rtl.sign_ext(disp15);             // 24 bits to 32 bits sign extention needed!
             PC += result * 2;
         }
         // no updates to PSW
@@ -682,9 +682,9 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         int const4 = (instruction & 0x00000F00) >> 12; // read instruction[15:12]
         if (D[a] >= cpu::rtl.sign_ext(const4))
         {
-            uint32_t disp15 = (instruction & 0x7FFF8000) >> 16; // read instruction[30:16]
-            uint32_t result = cpu::rtl.sign_ext(disp15);        // 24 bits to 32 bits sign extention needed!
-            PC += result * 2;
+            int disp15 = (instruction & 0x7FFF8000) >> 16; // read instruction[30:16]
+            int result = cpu::rtl.sign_ext(disp15);        // 24 bits to 32 bits sign extention needed!
+            PC += (int)(result * 2 / 4);
         }
         // no updates to PSW
     }
