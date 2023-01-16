@@ -195,32 +195,30 @@ int main()
         }
         else if (!out[0].compare("j"))
         {
-            if (out[1].length() == 24)
-            {
-                op1 = "00011101"; // Bit[7:0]
-                n1 = out[1].substr(8, 16);
-                n2 = out[1].substr(0, 8);
+            op1 = "00011101"; // Bit[7:0]
 
-                MyFile << n1 << n2 << op1 << endl;
-            }
+            n1 = extractNumber(out[1]);
+            operand1 = toBinary(stoi(n1));
+            operand1 = zeroExtend(operand1, 24 - operand1.length());
 
-            else if (out[1].length() == 8)
-            {
-                op1 = "00111100"; // Bit[7:0]
+            n1 = operand1.substr(8, 16);
+            n2 = operand1.substr(0, 8);
 
-                MyFile << out[1] << op1 << endl;
-            }
+            MyFile << n1 << n2 << op1 << endl;
         }
         else if (!out[0].compare("jge"))
         {
             n1 = extractNumber(out[1]); // d[a]
             n2 = extractNumber(out[2]); // const, d[b]
+            n3 = extractNumber(out[3]);
 
             operand1 = toBinary(stoi(n1));
             operand2 = toBinary(stoi(n2));
+            operand3 = toBinary(stoi(n3));
 
             operand1 = zeroExtend(operand1, 4 - operand1.length());
             operand2 = zeroExtend(operand2, 4 - operand2.length());
+            operand3 = zeroExtend(operand3, 15 - operand3.length());
 
             if (out[2][0] == '#')
             {
@@ -231,22 +229,35 @@ int main()
                 op1 = "01111111"; // Bit[7:0]
             }
 
-            MyFile << "00" << out[3] << operand2 << operand1 << op1 << endl;
+            MyFile << "0" << operand3 << operand2 << operand1 << op1 << endl;
         }
         else if (!out[0].compare("mov"))
         {
-            op1 = "00111011";
-
             n1 = extractNumber(out[1]);
             n2 = extractNumber(out[2]);
 
             operand1 = toBinary(stoi(n1));
             operand2 = toBinary(stoi(n2));
 
-            operand1 = zeroExtend(operand1, 4 - operand1.length());
-            operand2 = zeroExtend(operand2, 16 - operand2.length());
+            if (out[2][0] == '#')
+            {
+                op1 = "00111011"; // Bit[7:0]
 
-            MyFile << operand1 << operand2 << "0000" << op1 << endl;
+                operand1 = zeroExtend(operand1, 4 - operand1.length());
+                operand2 = zeroExtend(operand2, 16 - operand2.length());
+
+                MyFile << operand1 << operand2 << "0000" << op1 << endl;
+            }
+            else
+            {
+                op1 = "00001011"; // Bit[7:0]
+
+                operand1 = zeroExtend(operand1, 4 - operand1.length());
+                operand2 = zeroExtend(operand2, 4 - operand2.length());
+
+                MyFile << operand1 << "00011111"
+                       << "0000" << operand2 << "0000" << op1 << endl;
+            }
         }
         else if (!out[0].compare("mul"))
         {
