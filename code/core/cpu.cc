@@ -438,7 +438,7 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
     /*
      * NAND  -  Bitwise NAND
      */
-    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))
+    else if (opcode == INST_NAND)
     {
         int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
         int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
@@ -446,23 +446,366 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
         uint32_t result = (D[a] > temp) ? (D[a] - temp) : (temp - D[a]);
         D[c] = cpu::rtl.ssov(result, 32);
 
-        // update PSW
-        uint32_t overflow = (result > 0x7FFFFFFF) || (result < -0x80000000);
-        // update the PSW.V bit
-        PSW = overflow ? PSW | (1 << 30) : PSW & ~(1 << 30);
-        // update the PSW.SV bit
-        if (overflow)
-        {
-            PSW = PSW | (1 << 29);
+        //no updates to PSW
+    }
+
+    /*
+     * NAND.T  -  Bit Logical NAND
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //o7
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        int pos1 = (instruction & 0x001F0000) >> 16;  // read instruction[20:16]
+        int pos2 = (instruction & 0x0F800000) >> 23;  // read instruction[27:23]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        
+        uint32_t result = !((D[a] >> pos1) && (D[b] >> pos2));
+        D[c] = cpu::rtl.zero_ext(result, 32);   //!impliment zero extend
+
+        // no update PSW
+    }
+
+    /*
+     * NE  -  Not Equel
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //8B
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t temp = cpu::rtl.sign_ext(instruction & 0x001FF000); //sign extend const9
+        uint32_t result = (D[a] != temp) ? 1 : 0;
+        D[c] = cpu::rtl.zero_ext(result, 32);   //!impliment zero extend
+
+        // no update PSW
+    }
+
+    /*
+     * NE  -  Not Equel - 2
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //0B
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t temp = cpu::rtl.sign_ext(instruction & 0x001FF000); //sign extend const9
+        uint32_t result = (D[a] != D[b]) ? 1 : 0;
+        D[c] = cpu::rtl.zero_ext(result, 32);   //!impliment zero extend
+
+        // no update PSW
+    }
+
+    /*
+     * NE.A  -  Not Equel Address
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //01
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t temp = cpu::rtl.sign_ext(instruction & 0x001FF000); //sign extend const9
+        uint32_t result = (A[a] != A[b]) ? 1 : 0;
+        D[c] = cpu::rtl.zero_ext(result, 32);   //!impliment zero extend
+
+        // no update PSW
+    }
+
+    /*
+     * NEZ.A  -  Not Equel Zero Address
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //01
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t temp = cpu::rtl.sign_ext(instruction & 0x001FF000); //sign extend const9
+        uint32_t result = (A[a] != 0) ? 1 : 0;
+        D[c] = cpu::rtl.zero_ext(result, 32);   //!impliment zero extend
+
+        // no update PSW
+    }
+
+    /*
+     * NOP  -  No Operation
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //0D
+    {
+        // no operation
+    }
+
+    /*
+     * NOR  -  Bitwise NOR
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //8F
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t temp = cpu::rtl.zero_ext(instruction & 0x001FF000); //sign extend const9
+        uint32_t result = ~(D[a] | temp);
+        D[c] = result;   //!impliment zero extend
+
+        // no update PSW
+    }
+
+    /*
+     * NOR  -  Bitwise NOR - 2
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //0F
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t result = ~(D[a] | D[b]);
+        D[c] = result;
+
+        // no update PSW
+    }
+
+    /*
+     * NOR.T  -  Bit logical NOR
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //87
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        int pos1 = (instruction & 0x001F0000) >> 16;  // read instruction[20:16]
+        int pos2 = (instruction & 0x0F800000) >> 23;  // read instruction[27:23]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        
+        uint32_t result = !((D[a] >> pos1) | (D[b] >> pos2));
+        D[c] = cpu::rtl.zero_ext(result, 32);   //!impliment zero extend
+
+        // no update PSW
+    }
+
+    /*
+     * NOT  -  16bit NOT
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //46
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        uint32_t result = ~(D[a]);
+        D[a] = result;
+
+        // no update PSW
+    }
+
+    //############################################################################################
+    //#########################################       ############################################
+    //#########################################   J   ############################################
+    //#########################################       ############################################
+    //############################################################################################
+
+    /*
+     * J  -  Jump Unconditional
+     */
+    else if (opcode == INST_JMP)
+    {
+        uint32_t disp24_1 = (instruction & 0x00007F00) << 24;  // read instruction[15:8]
+        uint32_t disp24_2 = (instruction & 0xFFFF8000) >> 16;  // read instruction[31:16]
+        uint32_t temp = disp24_1+disp24_2;
+        uint32_t result = cpu::rtl.sign_ext(temp*2);   //24 bits to 32 bits sign extention needed!
+        PC += result;
+
+        //no updates to PSW
+    }
+
+    /*
+     * JA  -  Jump Unconditional Absolute
+     * PC = {disp24[23:20], 7’b0000000, disp24[19:0], 1’b0};
+     */
+    else if (opcode == INST_JA)
+    {
+        uint32_t disp24_1 = (instruction & 0x00007F00) << 24;  // read instruction[15:8]
+        uint32_t disp24_2 = (instruction & 0xFFFF8000) << 15;  // read instruction[31:16] (shifted only 15 bits because of the LSB is definite 0)
+        uint32_t temp = disp24_1+disp24_2;
+        uint32_t result = cpu::rtl.sign_ext(result);   //24 bits to 32 bits sign extention needed!
+        PC += result;
+
+        //no updates to PSW
+    }
+
+    /*
+     * JEQ  -  Jump if Equal
+     */
+    else if (opcode == INST_JEQ)
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int const4 = (instruction & 0x00000F00) >> 12;  // read instruction[15:12]
+        if (D[a] == cpu::rtl.sign_ext(const4)){
+            uint32_t disp15 = (instruction & 0x7FFF8000) >> 16;  // read instruction[30:16]
+            uint32_t result = cpu::rtl.sign_ext(disp15);   //24 bits to 32 bits sign extention needed!
+            PC += result*2;
         }
-        // update the PSW.AV bit
-        uint32_t aov = ((result & 0x80000000) ^ (result & 0x40000000)) >> 30; // result[31] ^ result[30];
-        PSW = aov ? PSW | (1 << 28) : PSW & ~(1 << 28);
-        // update the PSW.SAV bit
-        if (aov)
-        {
-            PSW = PSW | (1 << 27);
+        //no updates to PSW
+    }
+
+    /*
+     * JEQ  -  Jump if Equal - 1
+     */
+    else if (opcode == INST_JEQ1)
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        if (D[a] == D[b]){
+            uint32_t disp15 = (instruction & 0x7FFF8000) >> 16;  // read instruction[30:16]
+            uint32_t result = cpu::rtl.sign_ext(disp15);   //24 bits to 32 bits sign extention needed!
+            PC += result*2;
         }
+        //no updates to PSW
+    }
+
+    /*
+     * JEQ.A  -  Jump if Equal Address
+     */
+    else if (opcode == INST_JEQA)
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        if (A[a] == A[b]){
+            uint32_t disp15 = (instruction & 0x7FFF8000) >> 16;  // read instruction[30:16]
+            uint32_t result = cpu::rtl.sign_ext(disp15);   //24 bits to 32 bits sign extention needed!
+            PC += result*2;
+        }
+        //no updates to PSW
+    }
+
+    /*
+     * JGE  -  Jump if Greater than or Equal
+     */
+    else if (opcode == INST_JGE && ((instruction & 0x80000000) >> 31 == 0x00))
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int const4 = (instruction & 0x00000F00) >> 12;  // read instruction[15:12]
+        if (D[a] >= cpu::rtl.sign_ext(const4)){
+            uint32_t disp15 = (instruction & 0x7FFF8000) >> 16;  // read instruction[30:16]
+            uint32_t result = cpu::rtl.sign_ext(disp15);   //24 bits to 32 bits sign extention needed!
+            PC += result*2;
+        }
+        //no updates to PSW
+    }
+
+    /*
+     * JGE  -  Jump if Greater than or Equal - 1
+     */
+    else if (opcode == INST_JGE1)
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        if (D[a] >= D[b]){
+            uint32_t disp15 = (instruction & 0x7FFF8000) >> 16;  // read instruction[30:16]
+            uint32_t result = cpu::rtl.sign_ext(disp15);   //24 bits to 32 bits sign extention needed!
+            PC += result*2;
+        }
+        //no updates to PSW
+    }
+
+    /*
+     * JGE.U  -  Jump if Greater than or Equal Unsigned
+     */
+    else if (opcode == INST_JGEU && ((instruction & 0x80000000) >> 31 == 0x01))
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int const4 = (instruction & 0x00000F00) >> 12;  // read instruction[15:12]
+        if (D[a] >= cpu::rtl.sign_ext(const4)){    //!unsigned comparison should be checked!
+            uint32_t disp15 = (instruction & 0x7FFF8000) >> 16;  // read instruction[30:16]
+            uint32_t result = cpu::rtl.sign_ext(disp15);   //24 bits to 32 bits sign extention needed!
+            PC += result*2;
+        }
+        //no updates to PSW
+    }
+
+    
+
+    //############################################################################################
+    //#########################################       ############################################
+    //#########################################   X   ############################################
+    //#########################################       ############################################
+    //############################################################################################
+    /*
+     * XNOR  -  Bitwise XNOR
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E)) //8F
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t temp = cpu::rtl.zero_ext(instruction & 0x001FF000);
+        uint32_t result = ~(D[a]^temp);
+        D[c] = result;
+
+        //no updates to PSW
+    }
+
+    /*
+     * XNOR  -  Bitwise XNOR - 2
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //0F
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t result = ~(D[a] ^ D[b]);
+        D[c] = result;
+
+        // no update PSW
+    }
+
+    /*
+     * XNOR.T  -  Bit logical XNOR
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //87
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        int pos1 = (instruction & 0x001F0000) >> 16;  // read instruction[20:16]
+        int pos2 = (instruction & 0x0F800000) >> 23;  // read instruction[27:23]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        
+        uint32_t result = !((D[a] >> pos1) ^ (D[b] >> pos2));
+        D[c] = cpu::rtl.zero_ext(result, 32);   //!impliment zero extend
+
+        // no update PSW
+    }
+
+    /*
+     * XOR  -  Bitwise XOR
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E)) //8F
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t temp = cpu::rtl.zero_ext(instruction & 0x001FF000);
+        uint32_t result = D[a]^temp ;
+        D[c] = result;
+
+        //no updates to PSW
+    }
+
+    /*
+     * XNOR  -  Bitwise XOR - 2
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //0F
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t result = D[a] ^ D[b];
+        D[c] = result;
+
+        // no update PSW
+    }
+
+    /*
+     * XOR  -  16bit XOR
+     */
+    else if (opcode == INST_NAND && ((instruction & 0x07F00000) >> 21 == 0x0E))  //46
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12;  // read instruction[15:12]
+        uint32_t result = D[a] ^ D[b];
+        D[a] = result;
+
+        // no update PSW
     }
 }
 
