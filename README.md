@@ -21,6 +21,19 @@ developing an ECU emulator. with high fidelity, fast instruction execution and m
 compatibility with MATLAB/SIMULINK.
 ___
 
+### Build Configuration
+first, you have to go the ```code/core``` directory.
+#### 
+```
+## to compile the code
+make
+
+## to run the compiler
+make run
+
+## to clean the build files
+make clean
+```
 
 #### Team
 

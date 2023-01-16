@@ -1,0 +1,357 @@
+ADD.A - Add Address
+ADDIH.A - Add Immediate High to Address
+ADDSC.A - Add Scaled Index to Address
+ADDSC.AT - Add Bit-Scaled Index to Address
+BISR - Begin Interrupt Service Routine
+CACHEA.I - Cache Address, Invalidate
+CACHEA.W - Cache Address, Writeback
+CACHEA.WI - Cache Address, Writeback and Invalidate
+CACHEI.W - Cache Index, Writeback
+CACHEI.I - Cache Index, Invalidate
+CACHEI.WI - Cache Index, Writeback, Invalidate
+CALL - Call
+CALLA - Call Absolute
+CALLI - Call Indirect
+CMPSWAP.W - Compare and Swap
+DEBUG - Debug
+DISABLE - Disable Interrupts
+DSYNC - Synchronize Data
+ENABLE - Enable Interrupts
+EQ.A - Equal to Address
+EQZ.A - Equal Zero Address
+FCALL - Fast Call
+FCALLA - Fast Call Absolute
+FCALLI - Fast Call Indirect
+FRET - Return from Fast Call
+GE.A - Greater Than or Equal Address
+ISYNC - Synchronize Instructions
+J - Jump Unconditional
+JA - Jump Unconditional Absolute
+JEQ.A - Jump if Equal Address
+JI - Jump Indirect
+JL - Jump and Link
+JLA - Jump and Link Absolute
+JLI - Jump and Link Indirect
+JNE.A - Jump if Not Equal Address
+JNZ.A - Jump if Not Equal to Zero Address
+JZ.A - Jump if Zero Address
+LD.A - Load Word to Address Register
+LD.B - Load Byte
+LD.BU - Load Byte Unsigned
+LD.D - Load Double-word
+LD.DA - Load Double-word to Address Register
+LD.H - Load Half-word
+LD.HU - Load Half-word Unsigned
+LD.Q - Load Half-word Signed Fraction
+LD.W - Load Word
+LDLCX - Load Lower Context
+
+LDMST - Load-Modify-Store
+LDUCX - Load Upper Context
+LEA - Load Effective Address
+LHA - Load High Address
+LOOP - Loop
+LOOPU - Loop Unconditional
+LT.A - Less Than Address
+MFCR - Move From Core Register
+MOV.A - Move Value to Address Register
+MOV.AA - Move Address from Address Register
+MOV.D - Move Address to Data Register
+MOVH.A - Move High to Address
+MTCR - Move To Core Register
+NE.A - Not Equal Address
+NEZ.A - Not Equal Zero Address
+NOP - No Operation
+RESTORE - Restore
+RET - Return from Call
+RFE - Return From Exception
+RFM - Return From Monitor
+RSLCX - Restore Lower Context
+ST.A - Store Word from Address Register
+ST.B - Store Byte
+ST.D - Store Double-word
+ST.DA - Store Double-word from Address Registers
+ST.H - Store Half-word
+ST.Q - Store Half-word Signed Fraction
+ST.T - Store Bit
+ST.W - Store Word
+STLCX - Store Lower Context
+STUCX - Store Upper Context
+SUB.A - Subtract Address
+SVLCX - Save Lower Context
+SWAP.W - Swap with Data Register
+SWAPMSK.W - Swap under Mask
+SYSCALL - System Call
+TRAPSV - Trap on Sticky Overflow
+TRAPV - Trap on Overflow
+WAIT - Wait
+
+ABS - Absolute Value
+ABS.B - Absolute Value Packed Byte
+ABS.H - Absolute Value Packed Half-word
+ABSDIF - Absolute Value of Difference
+ABSDIF.B - Absolute Value of Difference Packed Byte
+ABSDIF.H - Absolute Value of Difference Packed Half-word
+ABSDIFS - Absolute Value of Difference with Saturation
+ABSDIFS.H - Absolute Value of Difference Packed Half-word with Saturation
+ABSS - Absolute Value with Saturation
+ABSS.H - Absolute Value Packed Half-word with Saturation
+ADD - Add
+
+ADD.B - Add Packed Byte
+ADD.H - Add Packed Half-word
+ADDC - Add with Carry
+ADDI - Add Immediate
+ADDIH - Add Immediate High
+ADDS - Add Signed with Saturation
+ADDS.H - Add Signed Packed Half-word with Saturation
+ADDS.HU - Add Unsigned Packed Half-word with Saturation
+ADDS.U - Add Unsigned with Saturation
+ADDX - Add Extended
+AND - Bitwise AND
+AND.AND.T - Accumulating Bit Logical AND-AND
+AND.ANDN.T - Accumulating Bit Logical AND-AND-Not
+AND.NOR.T - Accumulating Bit Logical AND-NOR
+AND.OR.T - Accumulating Bit Logical AND-OR
+AND.EQ - Equal Accumulating
+AND.GE - Greater Than or Equal Accumulating
+AND.GE.U - Greater Than or Equal Accumulating Unsigned
+AND.LT - Less Than Accumulating
+AND.LT.U - Less Than Accumulating Unsigned
+AND.NE - Not Equal Accumulating
+AND.T - Bit Logical AND
+ANDN - Bitwise AND-Not
+ANDN.T - Bit Logical AND-Not
+BMERGE - Bit Merge
+BSPLIT - Bit Split
+CADD - Conditional Add
+CADDN - Conditional Add-Not
+CLO - Count Leading Ones
+CLO.H - Count Leading Ones in Packed Half-words
+CLS - Count Leading Signs
+CLS.H - Count Leading Signs in Packed Half-words
+CLZ - Count Leading Zeros
+CLZ.H - Count Leading Zeros in Packed Half-words
+CMOV (16-bit) - Conditional Move (16-bit)
+CMOVN (16-bit) - Conditional Move-Not (16-bit)
+CRC32.B - CRC32 Byte
+CRC32B.W - CRC32 Word Big-Endian
+CRC32L.W - CRC32 Word Little-Endian
+CRCN - User-Defined CRC
+CSUB - Conditional Subtract
+CSUBN - Conditional Subtract-Not
+DEXTR - Extract from Double Register
+DVADJ - Divide-Adjust
+DIV - Divide
+DIV.U - Divide Unsigned
+DVINIT - Divide-Initialization Word
+DVINIT.U - Divide-Initialization Word Unsigned
+DVINIT.B - Divide-Initialization Byte
+DVINIT.BU - Divide-Initialization Byte Unsigned
+DVINIT.H - Divide-Initialization Half-word
+DVINIT.HU - Divide-Initialization Half-word Unsigned
+DVSTEP - Divide-Step
+DVSTEP.U - Divide-Step Unsigned
+
+EQ - Equal
+EQ.B - Equal Packed Byte
+EQ.H - Equal Packed Half-word
+EQ.W - Equal Packed Word
+EQANY.B - Equal Any Byte
+EQANY.H - Equal Any Half-word
+EXTR - Extract Bit Field
+EXTR.U - Extract Bit Field Unsigned
+GE - Greater Than or Equal
+GE.U - Greater Than or Equal Unsigned
+IMASK - Insert Mask
+INS.T - Insert Bit
+INSN.T - Insert Bit-Not
+INSERT - Insert Bit Field
+IXMAX - Find Maximum Index
+IXMAX.U - Find Maximum Index (unsigned)
+IXMIN - Find Minimum Index
+IXMIN.U - Find Minimum Index (unsigned)
+JEQ - Jump if Equal
+JGE - Jump if Greater Than or Equal
+JGE.U - Jump if Greater Than or Equal Unsigned
+JGEZ (16-bit) - Jump if Greater Than or Equal to Zero (16-bit)
+JGTZ (16-bit) - Jump if Greater Than Zero (16-bit)
+JLEZ (16-bit) - Jump if Less Than or Equal to Zero (16-bit)
+JLT - Jump if Less Than
+JLT.U - Jump if Less Than Unsigned
+JLTZ (16-bit) - Jump if Less Than Zero (16-bit)
+JNE - Jump if Not Equal
+JNED - Jump if Not Equal and Decrement
+JNEI - Jump if Not Equal and Increment
+JNZ (16-bit) - Jump if Not Equal to Zero (16-bit)
+JNZ.T - Jump if Not Equal to Zero Bit
+JZ (16-bit) - Jump if Zero (16-bit)
+JZ.T - Jump if Zero Bit
+LT - Less Than
+LT.U - Less Than Unsigned
+LT.B - Less Than Packed Byte
+LT.BU - Less Than Packed Byte Unsigned
+LT.H - Less Than Packed Half-word
+LT.HU - Less Than Packed Half-word Unsigned
+LT.W - Less Than Packed Word
+LT.WU - Less Than Packed Word Unsigned
+MADD - Multiply-Add
+MADDS - Multiply-Add, Saturated
+MADD.H - Packed Multiply-Add Q Format
+MADDS.H - Packed Multiply-Add Q Format, Saturated
+MADD.Q - Multiply-Add Q Format
+MADDS.Q - Multiply-Add Q Format, Saturated
+MADD.U - Multiply-Add Unsigned
+MADDS.U - Multiply-Add Unsigned, Saturated
+MADDM.H - Packed Multiply-Add Q Format Multi-precision
+MADDMS.H - Packed Multiply-Add Q Format Multi-precision, Saturated
+MADDR.H - Packed Multiply-Add Q Format with Rounding
+MADDRS.H - Packed Multiply-Add Q Format with Rounding, Saturated
+
+MADDR.Q - Multiply-Add Q Format with Rounding
+MADDRS.Q - Multiply-Add Q Format with Rounding, Saturated
+MADDSU.H - Packed Multiply-Add/Subtract Q Format
+MADDSUS.H - Packed Multiply-Add/Subtract Q Format Saturated
+MADDSUM.H - Packed Multiply-Add/Subtract Q Format Multi-precision
+MADDSUMS.H - Packed Multiply-Add/Subtract Q Format Multi-precision Saturated
+MADDSUR.H - Packed Multiply-Add/Subtract Q Format with Rounding
+MADDSURS.H - Packed Multiply-Add/Subtract Q Format with Rounding Saturated
+MAX - Maximum Value
+MAX.U - Maximum Value Unsigned
+MAX.B - Maximum Value Packed Byte
+MAX.BU - Maximum Value Packed Byte Unsigned
+MAX.H - Maximum Value Packed Half-word
+MAX.HU - Maximum Value Packed Half-word Unsigned
+MIN - Minimum Value
+MIN.U - Minimum Value Unsigned
+MIN.B - Minimum Value Packed Byte
+MIN.BU - Minimum Value Packed Byte Unsigned
+MIN.H - Minimum Value Packed Half-word
+MIN.HU - Minimum Value Packed Half-word Unsigned
+MOV - Move
+MOV.U - Move Unsigned
+MOVH - Move High
+MSUB - Multiply-Subtract
+MSUBS - Multiply-Subtract, Saturated
+MSUB.H - Packed Multiply-Subtract Q Format
+MSUBS.H - Packed Multiply-Subtract Q Format, Saturated
+MSUB.Q - Multiply-Subtract Q Format
+MSUBS.Q - Multiply-Subtract Q Format, Saturated
+MSUB.U - Multiply-Subtract Unsigned
+MSUBS.U - Multiply-Subtract Unsigned, Saturated
+MSUBAD.H - Packed Multiply-Subtract/Add Q Format
+MSUBADS.H - Packed Multiply-Subtract/Add Q Format, Saturated
+MSUBADM.H - Packed Multiply-Subtract/Add Q Format-Multi-precision
+MSUBADMS.H - Packed Multiply-Subtract/Add Q Format-Multi-precision, Saturated
+MSUBADR.H - Packed Multiply-Subtract/Add Q Format with Rounding
+MSUBADRS.H - Packed Multiply-Subtract/Add Q Format with Rounding, Saturated
+MSUBM.H - Packed Multiply-Subtract Q Format-Multi-precision
+MSUBMS.H - Packed Multiply-Subtract Q Format-Multi-precision, Saturated
+MSUBR.H - Packed Multiply-Subtract Q Format with Rounding
+MSUBRS.H - Packed Multiply-Subtract Q Format with Rounding, Saturated
+MSUBR.Q - Multiply-Subtract Q Format with Rounding
+MSUBRS.Q - Multiply-Subtract Q Format with Rounding, Saturated
+MUL - Multiply
+MULS - Multiply, Saturated
+MUL.H - Packed Multiply Q Format
+MUL.Q - Multiply Q Format
+MUL.U - Multiply Unsigned
+MULS.U - Multiply Unsigned, Saturated
+MULM.H - Packed Multiply Q Format-Multi-precision
+MULR.H - Packed Multiply Q Format with Rounding
+MULR.Q - Multiply Q Format with Rounding
+NAND - Bitwise NAND
+NAND.T - Bit Logical NAND
+
+NE - Not Equal
+NOR - Bitwise NOR
+NOR.T - Bit Logical NOR
+NOT (16-bit) - Bitwise Complement NOT (16-bit)
+OR - Bitwise OR
+OR.AND.T - Accumulating Bit Logical OR-AND
+OR.ANDN.T - Accumulating Bit Logical OR-AND-Not
+OR.NOR.T - Accumulating Bit Logical OR-NOR
+OR.OR.T - Accumulating Bit Logical OR-OR
+OR.EQ - Equal Accumulating
+OR.GE - Greater Than or Equal Accumulating
+OR.GE.U - Greater Than or Equal Accumulating Unsigned
+OR.LT - Less Than Accumulating
+OR.LT.U - Less Than Accumulating Unsigned
+OR.NE - Not Equal Accumulating
+OR.T - Bit Logical OR
+ORN - Bitwise OR-Not
+ORN.T - Bit Logical OR-Not
+PACK - Pack
+PARITY - Parity
+POPCNT.W - Population Count Word
+RSTV - Reset Overflow Bits
+RSUB - Reverse-Subtract
+RSUBS - Reverse-Subtract with Saturation
+RSUBS.U - Reverse-Subtract Unsigned with Saturation
+SAT.B - Saturate Byte
+SAT.BU - Saturate Byte Unsigned
+SAT.H - Saturate Half-word
+SAT.HU - Saturate Half-word Unsigned
+SEL - Select
+SELN - Select-Not
+SH - Shift
+SH.EQ - Shift Equal
+SH.GE - Shift Greater Than or Equal
+SH.GE.U - Shift Greater Than or Equal Unsigned
+SH.H - Shift Packed Half-words
+SH.LT - Shift Less Than
+SH.LT.U - Shift Less Than Unsigned
+SH.NE - Shift Not Equal
+SH.AND.T - Accumulating Shift-AND
+SH.ANDN.T - Accumulating Shift-AND-Not
+SH.NAND.T - Accumulating Shift-NAND
+SH.NOR.T - Accumulating Shift-NOR
+SH.OR.T - Accumulating Shift-OR
+SH.ORN.T - Accumulating Shift-OR-Not
+SH.XNOR.T - Accumulating Shift-XNOR
+SH.XOR.T - Accumulating Shift-XOR
+SHA - Arithmetic Shift
+SHA.H - Arithmetic Shift Packed Half-words
+SHAS - Arithmetic Shift with Saturation
+SHUFFLE - Byte Shuffle
+SUB - Subtract
+SUB.B - Subtract Packed Byte
+SUB.H - Subtract Packed Half-word
+
+SUBC - Subtract With Carry
+SUBS - Subtract Signed with Saturation
+SUBS.U - Subtract Unsigned with Saturation
+SUBS.H - Subtract Packed Half-word with Saturation
+SUBS.HU - Subtract Packed Half-word Unsigned with Saturation
+SUBX - Subtract Extended
+UNPACK - Unpack Floating Point
+XNOR - Bitwise XNOR
+XNOR.T - Bit Logical XNOR
+XOR - Bitwise XOR
+XOR.EQ - Equal Accumulating
+XOR.GE - Greater Than or Equal Accumulating
+XOR.GE.U - Greater Than or Equal Accumulating Unsigned
+XOR.LT - Less Than Accumulating
+XOR.LT.U - Less Than Accumulating Unsigned
+XOR.NE - Not Equal Accumulating
+XOR.T - Bit Logical XOR
+ADD.F - Add Float
+CMP.F - Compare Float
+DIV.F - Divide Float
+FTOI - Float to Integer
+FTOIZ - Float to Integer, Round towards Zero
+FTOQ31 - Float to Fraction
+FTOQ31Z - Float to Fraction, Round towards Zero
+FTOU - Float to Unsigned
+FTOUZ - Float to Unsigned, Round towards Zero
+FTOHP - Single Precision to Half Precision
+HPTOF - Half Precision to Single Precision
+ITOF - Integer to Float
+MADD.F - Multiply Add Float
+MSUB.F - Multiply Subtract Float
+MUL.F - Multiply Float
+Q31TOF - Fraction to Floating-point
+QSEED.F - Inverse Square Root Seed
+SUB.F - Subtract Float
+UPDFL - Update Flags
+UTOF - Unsigned to Floating-point
