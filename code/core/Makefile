@@ -5,8 +5,8 @@ SRC= $(wildcard *.cc)
 all:
 	$(CC) $(SRC) -o $(OUTPUT)
 
-run: $(OUTPUT)
-	./$(OUTPUT)
+run: $(OUTPUT) file
+	./$(OUTPUT) file
 
 clean:
 	rm -f $(wildcard *.out)
