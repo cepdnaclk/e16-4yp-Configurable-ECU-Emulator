@@ -26,4 +26,12 @@
 #define INST_JGE1 0x7F
 #define INST_JGEU 0xFF
 
+// opcodes for instructions starting from "M"
+#define INST_MUL 0x73
+#define INST_MOV 0x3B
+#define INST_MOV2 0x0B
+
+// opcodes for instructions starting from "S"
+#define INST_SUB 0x0B
+
 #endif

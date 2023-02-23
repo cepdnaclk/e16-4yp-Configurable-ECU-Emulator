@@ -517,7 +517,7 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
     {
         int a = (instruction & 0x00000F00) >> 8;                     // read instruction[8:11]
         int c = (instruction & 0xF0000000) >> 28;                    // read instruction[28:31]
-        uint32_t temp = cpu::rtl.sign_ext(instruction & 0x001FF000); // sign extend const9
+        uint32_t temp = cpu::rtl.sign_ext(instruction & 0x001FF000); // sign extend const9   (!shift to  >> may need)
         uint32_t result = (A[a] != 0) ? 1 : 0;
         D[c] = cpu::rtl.zero_ext(result, 32); //! impliment zero extend
 
@@ -719,6 +719,108 @@ void cpu::execute(uint8_t opcode, uint32_t instruction)
             PC += result * 2;
         }
         // no updates to PSW
+    }
+
+    // ############################################################################################
+    // #########################################       ############################################
+    // #########################################   M   ############################################
+    // #########################################       ############################################
+    // ############################################################################################
+
+    /*
+     * MUL  -  Multiply
+     */
+    else if (opcode == INST_MUL)
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12; // read instruction[15:12]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        D[c] = D[a] * D[b];
+
+        // update PSW
+        uint32_t overflow = (result > 0x7FFFFFFF) || (result < -0x80000000);
+        // update the PSW.V bit
+        PSW = overflow ? PSW | (1 << 30) : PSW & ~(1 << 30);
+        // update the PSW.SV bit
+        if (overflow)
+        {
+            PSW = PSW | (1 << 29);
+        }
+        // update the PSW.AV bit
+        uint32_t aov = ((result & 0x80000000) ^ (result & 0x40000000)) >> 30; // result[31] ^ result[30];
+        PSW = aov ? PSW | (1 << 28) : PSW & ~(1 << 28);
+        // update the PSW.SAV bit
+        if (aov)
+        {
+            PSW = PSW | (1 << 27);
+        }
+
+        PC += 1;
+    }
+
+    /*
+     * MOV  -  Move
+     */
+    else if (opcode == INST_MOV)
+    {
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        uint32_t temp = cpu::rtl.sign_ext((instruction & 0x0FFFF000)>>12); // sign extend const16
+        D[c] = temp;
+
+        PC += 1;
+        // no updates to PSW
+    }
+
+    /*
+     * MOV  -  Move - 2
+     */
+    else if (opcode == INST_MOV2)
+    {
+        int b = (instruction & 0x0000F000) >> 12; // read instruction[15:12]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        D[c] = D[b];
+
+        PC += 1;
+        // no updates to PSW
+    }
+
+
+    // ############################################################################################
+    // #########################################       ############################################
+    // #########################################   S   ############################################
+    // #########################################       ############################################
+    // ############################################################################################
+
+    /*
+     * SUB -  Subtract
+     */
+    else if (opcode == INST_SUB && ((instruction & 0x0FF00000) >> 20 == 0x08))
+    {
+        int a = (instruction & 0x00000F00) >> 8;  // read instruction[8:11]
+        int b = (instruction & 0x0000F000) >> 12; // read instruction[15:12]
+        int c = (instruction & 0xF0000000) >> 28; // read instruction[28:31]
+        int result = (D[a] - D[b]);
+        D[c] = result;
+
+        // update PSW
+        uint32_t overflow = (result > 0x7FFFFFFF) || (result < -0x80000000);
+        // update the PSW.V bit
+        PSW = overflow ? PSW | (1 << 30) : PSW & ~(1 << 30);
+        // update the PSW.SV bit
+        if (overflow)
+        {
+            PSW = PSW | (1 << 29);
+        }
+        // update the PSW.AV bit
+        uint32_t aov = ((result & 0x80000000) ^ (result & 0x40000000)) >> 30; // result[31] ^ result[30];
+        PSW = aov ? PSW | (1 << 28) : PSW & ~(1 << 28);
+        // update the PSW.SAV bit
+        if (aov)
+        {
+            PSW = PSW | (1 << 27);
+        }
+
+        PC += 1;
     }
 
     // ############################################################################################
